@@ -1,13 +1,20 @@
 import React from 'react'
-import { Card as CardContainer, CardImg, CardTitle, CardText, Button, CardBody } from 'reactstrap'
+import { Card as CardContainer, CardImg, CardTitle, CardText, CardBody } from 'reactstrap'
+import { Favorite, FavoriteBorder } from '@material-ui/icons'
 
-const Card = ({ imageUrl, title, description }) => (
+const Card = ({ imageUrl, title='', description='', price=0, favorite=false, toogleFavorite }) => (
   <CardContainer style={styles.container}>
-    <CardImg top width='100%' src={imageUrl} />
+    <CardImg top width='100%' height='280px' src={imageUrl} />
     <CardBody>
       <CardTitle>{title}</CardTitle>
       <CardText style={styles.description}>{description.slice(0, 200)}</CardText>
-      <Button>Button</Button>
+      <div style={styles.rowReverse}>
+        <p>Preço: {price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL'})}</p>
+          { favorite ? 
+            <Favorite onClick={toogleFavorite} htmlColor='red' fontSize='large'/>: 
+            <FavoriteBorder onClick={toogleFavorite} htmlColor='red' fontSize='large'/> 
+          }
+      </div>
     </CardBody>
   </CardContainer>
 )
@@ -20,6 +27,12 @@ const styles = {
     margin: '1rem'
   },
   description: {
-    height: '10rem'
+    height: '10rem',
+    minHeight: '10rem'
+  },
+  rowReverse: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   }
 }

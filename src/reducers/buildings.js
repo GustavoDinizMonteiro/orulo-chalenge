@@ -14,6 +14,17 @@ const buildings = (state = { pages: {}, data: [], page: 1, total_pages: 0, total
         data: union(...Object.values(state.pages)),
         total_pages, total, page
       }
+
+    case states.toogleFavorite:
+      const { id } = action
+      return {
+        ...state,
+        data: state.data
+          .map(building => building.id === id ? 
+              { ...building, favorite: !building.favorite }: 
+              building
+          )
+      }
     
     // fail cases
     default:

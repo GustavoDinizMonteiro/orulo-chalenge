@@ -16,5 +16,11 @@ export default {
         dispatch(failure(err))
       }
     }
+  },
+
+  toogleFavorite: id => {
+    return async(dispatch) => {
+      dispatch({ type: states.toogleFavorite, id })
+    }
   }
 }

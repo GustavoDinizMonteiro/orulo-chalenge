@@ -13,6 +13,8 @@ class Feed extends React.Component {
     }
   }
 
+  toogleFavorite = id => this.props.dispatch(actions.toogleFavorite(id))
+
   render() {
     const { data } = this.props.buildings
     return (
@@ -20,7 +22,9 @@ class Feed extends React.Component {
         <Row>
           { data.map(building => (
             <Card imageUrl={building.default_image['520x280']}
-              title={building.name} 
+              title={building.name} price={building.min_price}
+              favorite={building.favorite}
+              toogleFavorite={() => this.toogleFavorite(building.id)}
               description={building.description}/>
           ))}
         </Row>

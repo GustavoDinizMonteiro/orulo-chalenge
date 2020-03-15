@@ -15,7 +15,7 @@ class Feed extends React.Component {
     }
   }
 
-  toogleFavorite = id => this.props.dispatch(actions.toogleFavorite(id))
+  toogleFavorite = (id, favorite) => this.props.dispatch(actions.toogleFavorite(id, favorite))
 
   changePage = idx => this.props.dispatch(actions.getBuildings(idx))
 
@@ -36,7 +36,7 @@ class Feed extends React.Component {
             <Card key={building.id} imageUrl={building.default_image['520x280']}
               title={building.name} price={building.min_price}
               favorite={favorites.includes(parseInt(building.id))}
-              toogleFavorite={() => this.toogleFavorite(building.id)}
+              toogleFavorite={() => this.toogleFavorite(building.id, !favorites.includes(parseInt(building.id)))}
               description={building.description}/>
           ))}
         </Row>

@@ -1,5 +1,5 @@
 import states from './states'
-import { list, getFavorites } from '../../providers/buildings'
+import { list, getFavorites, addFavorite } from '../../providers/buildings'
 
 export default {
   getBuildings: page => {
@@ -34,9 +34,19 @@ export default {
     }
   },
 
-  toogleFavorite: id => {
+  toogleFavorite: (id, favorite) => {
     return async(dispatch) => {
-      dispatch({ type: states.toogleFavorite, id })
+      const start = () => ({ type: states.toogleFavorite.start })
+      const success = (data = {}) => ({ type: states.toogleFavorite.success, data, favorite })
+      const failure = err => ({ type: states.toogleFavorite.failure, err })
+
+      try {
+        dispatch(start())
+        const data = await addFavorite(id, favorite)
+        dispatch(success(data))
+      } catch (err) {
+        dispatch(failure(err))
+      }
     }
   }
 }

@@ -11,5 +11,9 @@ export default {
     failure: 'GET_ALL_FAVORITES_FAILURE'
   },
 
-  toogleFavorite: 'TOOGLE_FAVORITE'
+  toogleFavorite: {
+    start: 'TOOGLE_FAVORITE_START',
+    success: 'TOOGLE_FAVORITE_SUCCESS',
+    failure: 'TOOGLE_FAVORITE_FAILURE'
+  },
 }

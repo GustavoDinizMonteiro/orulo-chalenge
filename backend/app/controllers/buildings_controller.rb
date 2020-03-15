@@ -1,5 +1,6 @@
 class BuildingsController < ApplicationController
   before_action :set_building, only: [:show, :update, :destroy]
+  before_action :building_to_delete, only: [:create]
 
   # GET /buildings
   def index
@@ -15,12 +16,16 @@ class BuildingsController < ApplicationController
 
   # POST /buildings
   def create
-    @building = Building.new(building_params)
-
-    if @building.save
-      render json: @building, status: :created, location: @building
+    if building_params[:favorite]    
+      @building = Building.new(building_params)
+  
+      if @building.save
+        render json: @building, status: :created, location: @building
+      else
+        render json: @building.errors, status: :unprocessable_entity
+      end
     else
-      render json: @building.errors, status: :unprocessable_entity
+      @building.destroy
     end
   end
 
@@ -42,6 +47,10 @@ class BuildingsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_building
       @building = Building.find(params[:id])
+    end
+
+    def building_to_delete
+      @building = Building.find_by(external_id: params[:external_id])
     end
 
     # Only allow a trusted parameter "white list" through.

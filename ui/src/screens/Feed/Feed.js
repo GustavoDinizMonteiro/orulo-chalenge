@@ -36,6 +36,7 @@ class Feed extends React.Component {
             <Card key={building.id} imageUrl={building.default_image['520x280']}
               title={building.name} price={building.min_price}
               favorite={favorites.includes(parseInt(building.id))}
+              shareUrl={building.orulo_url}
               toogleFavorite={() => this.toogleFavorite(building.id, !favorites.includes(parseInt(building.id)))}
               description={building.description}/>
           ))}

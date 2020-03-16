@@ -64,3 +64,17 @@ However many features that I would like to have delivered but could not for reas
         ```
             rake db:create db:setup && rails s
         ```
+
+### Docker
+
+Additionally, you can use docker container to automatise backend deployment using the image available in docker hub 
+
+``` 
+    docker pull gmonteiro/orulo-challenge-backend:latest
+```
+
+ou building from source following next steps o backend bolder:
+
+```
+    docker build . && docker-compose build && docker-compose run web rake db:create db:setup
+```

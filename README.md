@@ -10,7 +10,7 @@ like some of them.
 
 # Solution
 
-For my solution I decided to use ReactJs for the interface and a simple Rails api to be able to persist the likes.
+For my solution i decided to use ReactJs for the interface and a simple Rails api to be able to persist the likes.
 
 The solution has the following features:
 
@@ -19,11 +19,12 @@ The solution has the following features:
 - Like offers
 - Sharing
 
-However many features that I would like to have delivered but could not for reasons of time or access the API features can be listed:
+However many features that i would like to have delivered but the small time i got to work did not allow can be listed following:
 
-- Favorites session
-- Search Bar
-- Filters (by number of rooms, area...)
+- User accounts
+- Favorites session (filtering all buildings by ids)
+- Search Bar (using http://api.orulo.com.br.s3-website-us-east-1.amazonaws.com/#operation/buildingNameSearch)
+- Filters (by number of rooms, area... exploring the API documentation)
 - View to access the building information in more detail
 - Tests for backend and frontend
 - Continuos integration with Travis CI 
@@ -78,3 +79,5 @@ ou building from source following next steps o backend bolder:
 ```
     docker build . && docker-compose build && docker-compose run web rake db:create db:setup
 ```
+
+See the online demo in [here](https://orulo-challenge-ui.herokuapp.com/)

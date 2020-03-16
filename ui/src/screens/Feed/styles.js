@@ -4,6 +4,14 @@ export const Container = styled.div`
   margin: 0 5px;
 `
 
+export const Title = styled.h1`
+  font-size: 3rem;
+  font-weight: bold;
+  color: gray;
+  text-align: center;
+  margin: 1rem 0;
+`
+
 export const Row = styled.div`
   display: flex;
   flex-direction: row;
